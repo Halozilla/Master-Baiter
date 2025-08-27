@@ -40,6 +40,8 @@ def rand_fact(fact):
     return random.choice(fact)
 
 
+def msg_chance():
+    return random.randint(1, 3) == 1# 33% chance for bot to msg, change second number to increase or decrease
 
 #------------------------------------------------------------
 # Discord Client
@@ -64,11 +66,12 @@ class Client(discord.Client):
     async def on_message(self, message):
         if message.author == self.user:
             return
-        #if message.author.name == 'INSERT USERNAME HERE':
-        #    await message.add_reaction('🤓')
-        #    await message.reply(f'{message.author.mention} 🤓')
-        facts = get_facts(INSERT YOUR FILE PATH HERE, message.author.name)
-        await self.bot_msg(message, facts)
+        if message.author.name == 'INSERT USERNAME HERE':
+            await message.add_reaction('🤓')
+            await message.reply(f'{message.author.mention} 🤓')
+        if msg_chance():
+            facts = get_facts(INSERT YOUR FILE PATH HERE, message.author.name)
+            await self.bot_msg(message, facts)
 
 #------------------------------------------------------------
 # Run Bot
