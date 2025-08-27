@@ -66,9 +66,9 @@ class Client(discord.Client):
     async def on_message(self, message):
         if message.author == self.user:
             return
-        if message.author.name == 'INSERT USERNAME HERE':
-            await message.add_reaction('🤓')
-            await message.reply(f'{message.author.mention} 🤓')
+        #if message.author.name == 'INSERT USERNAME HERE':
+        #    await message.add_reaction('🤓')
+        #    await message.reply(f'{message.author.mention} 🤓')
         if msg_chance():
             facts = get_facts(INSERT YOUR FILE PATH HERE, message.author.name)
             await self.bot_msg(message, facts)
