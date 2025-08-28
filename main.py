@@ -49,8 +49,18 @@ def msg_chance():
 class Client(discord.Client):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.openai = OpenAI(api_key=("INSERT YOUR API KEY HERE"))
+        self.openai = OpenAI(api_key="INSERT YOUR API KEY HERE")
 
+
+    # ------------------------------------------------------------
+    # on_login
+    # ------------------------------------------------------------
+    async def on_login(self, start_channel_id, start_message):
+        channel = client.get_channel(start_channel_id)
+        await channel.send(start_message)
+
+
+    
     async def bot_msg(self, message, author_facts):
         fact = random.choice(author_facts) if author_facts else "nothing"
         print(fact)
@@ -73,6 +83,9 @@ class Client(discord.Client):
             facts = get_facts(INSERT YOUR FILE PATH HERE, message.author.name)
             await self.bot_msg(message, facts)
 
+    async def on_ready(self):
+        await self.on_login(const_start_channel_id, const_start_message)
+
 #------------------------------------------------------------
 # Run Bot
 #------------------------------------------------------------
@@ -80,6 +93,9 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.guilds = True
 intents.members = True
+
+const_start_channel_id = #Assign default channel id here where the bot will say stuff
+const_start_message = "I'm back chat!" #Default coming online msg
 
 client = Client(intents=intents)
 client.run("INSERT APP ID HERE")
