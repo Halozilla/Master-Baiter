@@ -17,6 +17,6 @@ PERSONS_DISCORD_USERNAME_GOES_HERE_3 : {PERSONAL_FACT_0, PERSONAL_FACT_1}
 
   Personal facts can be enclosed in strings or not. Ensure the persons discord username is used and not their nickname
 
-  Once this is done, inside of main.py insert your Chat-gpt api key into the "bot_msg" function, then insert your discord app client ID near the end of the file. Additonally insert your txt doc path into the read_file funciton.
+  Once this is done, inside of main.py insert your Chat-gpt api key into the "bot_msg" function, then insert your discord app client ID near the end of the file. Additonally insert your txt doc path into the get_facts funciton inside of on_message.
 
   Additionally there is a function that makes the bot reply with a nerd face emoji, just insert a discord username into it, then un-comment it, from then on the bot will automatically respond to that person with the nerd face.
